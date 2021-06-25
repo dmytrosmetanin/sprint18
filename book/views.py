@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .models import Book
+from .book_form import BookForm
 # Create your views here.
 
 def book_list(request):
@@ -13,25 +14,22 @@ def book_list(request):
 def book_form(request, id = 0):
     if request.method == 'GET':
         if id == 0:
-            return render(request, 'book/book_form.html')
+            form = BookForm()
         else:
             book = Book.get_by_id(id)
-            context = {'book': book}
-            return render(request, 'book/book_form.html', context)
+            form = BookForm(instance=book)
+
+        return render(request, 'book/book_form.html', {'form': form})
     else:
         if id == 0:
-            name = (request.POST.get('name'))
-            decsription = (request.POST.get('description'))
-            count = (request.POST.get('count'))
-            b = Book.create(name, decsription, int(count))
-            return redirect('book:book_list')
+            form = BookForm(request.POST)
+
         else:
-            name = (request.POST.get('name'))
-            decsription = (request.POST.get('description'))
-            count = (request.POST.get('count'))
-            book = Book.get_by_id(id)
-            book.update(name, decsription, count)
-            return redirect('book:book_list')
+            author = Book.get_by_id(id)
+            form = BookForm(request.POST, instance=author)
+        if form.is_valid():
+            form.save()
+        return redirect('book:book_list')
 
 def book_delete(request, id):
     Book.delete_by_id(id)

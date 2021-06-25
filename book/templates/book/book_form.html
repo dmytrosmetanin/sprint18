@@ -1,22 +1,12 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %} Book {% endblock %}
 {% block main %}
 
     <form action="" method="post">
-
     {% csrf_token %}
-
-  <div class="mb-3">
-    <label for="name" class="form-label">Name</label>
-    <input type="text" class="form-control" name="name" value="{{ book.name }}" >
-  </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">description</label>
-        <input type="text" class="form-control" name="description" value="{{ book.description }}" >
-    </div>
-  <div class="mb-3">
-    <label for="count" class="form-label">count</label>
-    <input type="text" class="form-control" name="count" value="{{ book.count }}" >
-  </div>
+    {{ form | crispy }}
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
