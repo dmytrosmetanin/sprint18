@@ -13,6 +13,24 @@
 
 </head>
 <body>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <li> <a href="{% url 'book:book_list' %}"> Список всех книг</a> </li>
+    </div>
+    <div class="col">
+      <li> <a href="{% url 'author:author_list' %}"> Список всех писателей</a> </li>
+    </div>
+    <div class="col">
+      <li> <a href="{% url 'authentication:user_list' %}"> Список всех пользователей</a> </li>
+    </div>
+      <div class="col">
+      <li> <a href="{% url 'order:order_list' %}"> Список всех заказов</a> </li>
+    </div>
+  </div>
+</div>
+
+
 
 
 {% block main %}

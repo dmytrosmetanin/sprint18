@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Title</title>
+{% endblock %}
+
+{% block main %}
+    <table class = 'table table-borderless'>
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td> Имя</td>
+            <td>Отчество</td>
+            <td>Фамилия</td>
+             <td>Почта</td>
+             <td>Статус</td>
+            <td><a href="{% url 'authentication:user_insert' %}" class="btn btn-outline-success">
+                <i class="fas fa-plus"></i> Add user
+            </a> </td>
+            <td> </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in all_users %}
+        <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.middle_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+                <a href="{% url 'authentication:user_update' user.id %}" class="btn text-secondary">
+                <i>Изменить</i>
+                </a>
+            </td>
+            <td>
+            <form action="{% url 'authentication:user_delete' user.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn">
+                    <i class="far fa-trash-alt fa-lg text-danger float-right"> Удалить </i>
+                </button>
+            </form>
+         </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

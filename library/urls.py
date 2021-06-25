@@ -19,7 +19,9 @@ from .views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('book/', include('book.urls', namespace='book')),
-    path('author/', include('author.urls', namespace='author')),
+    path('books/', include('book.urls', namespace='book')),
+    path('authors/', include('author.urls', namespace='author')),
+    path('users/', include('authentication.urls', namespace='user')),
+    path('orders/', include('order.urls', namespace='order')),
     path('', index, name='index')
 ]
