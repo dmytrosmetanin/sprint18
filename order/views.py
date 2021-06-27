@@ -14,7 +14,7 @@ def order_list(request):
                     'book': f"{order.book.name}({order.book.description})"
         }
         orders.append(order_txt)
-    print(orders)
+
     context.update({'all_order': orders})
     return render(request, 'order/all_order.html', context)
 
