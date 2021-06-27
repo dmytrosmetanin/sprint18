@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for book in all_book %}
+        {% for order in all_order %}
         <tr>
             <td>{{ order.user }}</td>
             <td>{{ order.book }}</td>
@@ -30,7 +30,7 @@
                 </a>
             </td>
             <td>
-            <form action="{% url 'book:book_delete' order.id %}" method="post" class="d-inline">
+            <form action="{% url 'order:order_delete' order.id %}" method="post" class="d-inline">
                 {% csrf_token %}
                 <button type="submit" class="btn">
                     <i class="far fa-trash-alt fa-lg text-danger float-right"> Удалить </i>

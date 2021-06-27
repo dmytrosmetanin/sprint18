@@ -7,7 +7,7 @@ from .order_form import OrderForm
 def order_list(request):
     context = {}
     all_order = Order.get_all()
-    context.update({'all_book': all_order})
+    context.update({'all_order': all_order})
     return render(request, 'order/all_order.html', context)
 
 

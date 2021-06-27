@@ -10,8 +10,8 @@ class Order(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    end_at = models.DateTimeField(null=True)
-    plated_end_at = models.DateTimeField()
+    end_at = models.DateTimeField( null=True)
+    plated_end_at = models.DateTimeField(null=True)
 
     def __str__(self):
         """
@@ -38,7 +38,7 @@ class Order(models.Model):
         }
 
     @staticmethod
-    def create(user, book, plated_end_at):
+    def create(user, book, plated_end_at=datetime.datetime.now()):
 
         order = Order(user=user, book=book, plated_end_at=plated_end_at)
         if book.count <= len([order for order in Order.get_not_returned_books() if order.book.id == book.id]):
