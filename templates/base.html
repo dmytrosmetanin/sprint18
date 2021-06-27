@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ru">
+<html lang="en">
 <head>
 
     <meta charset="utf-8">
@@ -10,38 +10,60 @@
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
     <title>{% block title %}Library{% endblock %}</title>
+    <style>
+        h1 {
+            font-family: sans-serif;
+            font-size: 90px;
+            text-align: center;
+            margin: 20px;
+        }
 
+        .col {
+            font-size: 20px;
+        }
+
+        .col:hover {
+
+            background-color: violet;
+            padding: 10px;
+
+        }
+
+    </style>
 </head>
 <body>
+
+<h1>WELCOME TO OUR LIBRARY!</h1>
+
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <li> <a href="{% url 'book:book_list' %}"> Список всех книг</a> </li>
+    <div class="row">
+        <div class="col">
+            <li><a href="{% url 'book:book_list' %}"> List of all books</a></li>
+        </div>
+        <div class="col">
+            <li><a href="{% url 'author:author_list' %}"> List of all authors</a></li>
+        </div>
+        <div class="col">
+            <li><a href="{% url 'authentication:user_list' %}"> List of all users</a></li>
+        </div>
+        <div class="col">
+            <li><a href="{% url 'order:order_list' %}"> List of all orders</a></li>
+        </div>
     </div>
-    <div class="col">
-      <li> <a href="{% url 'author:author_list' %}"> Список всех писателей</a> </li>
-    </div>
-    <div class="col">
-      <li> <a href="{% url 'authentication:user_list' %}"> Список всех пользователей</a> </li>
-    </div>
-      <div class="col">
-      <li> <a href="{% url 'order:order_list' %}"> Список всех заказов</a> </li>
-    </div>
-  </div>
+
 </div>
 
 
 
 
 {% block main %}
+
 {% endblock %}
 
 
 
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
+
 
 </body>
 </html>

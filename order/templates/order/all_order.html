@@ -7,11 +7,11 @@
     <table class = 'table table-borderless'>
     <thead class="border-bottom font-weight-bold">
         <tr>
-            <td> Пользователь библлитеки</td>
-            <td>Взятая книга</td>
+            <td> User</td>
+            <td>Borrowed book</td>
 
             <td><a href="{% url 'order:order_insert' %}" class="btn btn-outline-success">
-                <i class="fas fa-plus"></i> Выдать книгу:
+                <i class="fas fa-plus"></i> Give a book:
             </a> </td>
             <td> </td>
         </tr>
@@ -24,14 +24,14 @@
 
             <td>
                 <a href="{% url 'order:order_update' order.id %}" class="btn text-secondary px-0">
-                <i class="far fa-edit fa-lg">Изменить</i>
+                <i class="far fa-edit fa-lg">Update</i>
                 </a>
             </td>
             <td>
             <form action="{% url 'order:order_delete' order.id %}" method="post" class="d-inline">
                 {% csrf_token %}
                 <button type="submit" class="btn">
-                    <i class="far fa-trash-alt fa-lg text-danger float-right"> Удалить </i>
+                    <i class="far fa-trash-alt fa-lg text-danger float-right"> Delete </i>
                 </button>
             </form>
          </td>

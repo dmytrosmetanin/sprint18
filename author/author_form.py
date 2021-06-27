@@ -7,9 +7,9 @@ class AuthorForm(forms.ModelForm):
         model = Author
         fields = ('name', 'surname', 'patronymic')
         labels = {
-            'name': "Имя Автора",
-            'surname': "Фамилия",
-            'patronymic': "Отчество"
+            'name': "Author's name",
+            'surname': "Last name",
+            'patronymic': "Patronymic name"
         }
 
 

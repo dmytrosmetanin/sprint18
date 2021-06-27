@@ -7,10 +7,10 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = ('user', 'book', 'end_at', 'plated_end_at')
         labels = {
-            'user': "Пользователь библлитеки",
-            'book': "Взятая книга",
-            'end_at': "Возвращена",
-            'plated_end_at': "Когда вернуть"
+            'user': "User",
+            'book': "Borrowed book",
+            'end_at': "Given back",
+            'plated_end_at': "Return by date"
         }
         exclude = ('end_at', 'plated_end_at')
 

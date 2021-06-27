@@ -7,11 +7,11 @@
     <table class = 'table table-borderless'>
     <thead class="border-bottom font-weight-bold">
         <tr>
-            <td> Имя</td>
-            <td>Отчество</td>
-            <td>Фамилия</td>
-             <td>Почта</td>
-             <td>Статус</td>
+            <td> Name</td>
+            <td>Patronymic name</td>
+            <td>Last name</td>
+             <td>E-mail</td>
+             <td>Role</td>
             <td><a href="{% url 'authentication:user_insert' %}" class="btn btn-outline-success">
                 <i class="fas fa-plus"></i> Add user
             </a> </td>
@@ -28,14 +28,14 @@
             <td>{{ user.role }}</td>
             <td>
                 <a href="{% url 'authentication:user_update' user.id %}" class="btn text-secondary">
-                <i>Изменить</i>
+                <i>Update</i>
                 </a>
             </td>
             <td>
             <form action="{% url 'authentication:user_delete' user.id %}" method="post" class="d-inline">
                 {% csrf_token %}
                 <button type="submit" class="btn">
-                    <i class="far fa-trash-alt fa-lg text-danger float-right"> Удалить </i>
+                    <i class="far fa-trash-alt fa-lg text-danger float-right"> Delete </i>
                 </button>
             </form>
          </td>

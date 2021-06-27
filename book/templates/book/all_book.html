@@ -7,10 +7,10 @@
     <table class = 'table table-borderless'>
     <thead class="border-bottom font-weight-bold">
         <tr>
-            <td> Название книги</td>
-            <td>Описание</td>
-            <td>Количество</td>
-            <td>Список авторов</td>
+            <td> Title</td>
+            <td>Description</td>
+            <td>Quantity</td>
+            <td>List of authors</td>
             <td><a href="{% url 'book:book_insert' %}" class="btn btn-outline-success">
                 <i class="fas fa-plus"></i> Add book
             </a> </td>
@@ -29,14 +29,14 @@
             </td>
             <td>
                 <a href="{% url 'book:book_update' book.id %}" class="btn text-secondary px-0">
-                <i class="far fa-edit fa-lg">Изменить</i>
+                <i class="far fa-edit fa-lg">Update</i>
                 </a>
             </td>
             <td>
             <form action="{% url 'book:book_delete' book.id %}" method="post" class="d-inline">
                 {% csrf_token %}
                 <button type="submit" class="btn">
-                    <i class="far fa-trash-alt fa-lg text-danger float-right"> Удалить </i>
+                    <i class="far fa-trash-alt fa-lg text-danger float-right"> Delete</i>
                 </button>
             </form>
          </td>

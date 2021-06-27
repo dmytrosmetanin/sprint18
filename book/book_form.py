@@ -7,13 +7,13 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = ('name', 'description', 'count', 'authors')
         labels = {
-            'name': "Название книги",
-            'description': "Описание книги",
-            'count': "Количество книг в библиотеке",
-            'authors': "Авторы книги"
+            'name': "Title",
+            'description': "Description",
+            'count': "Quantity of books at the library",
+            'authors': "Authors"
         }
 
 
     def __init__(self, *args, **kwargs):
         super(BookForm, self).__init__(*args, **kwargs)
-        self.fields['authors'].empty_label = 'Выберите одну или несколько книг'
+        self.fields['authors'].empty_label = 'Choose the book'

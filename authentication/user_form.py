@@ -14,12 +14,12 @@ class UserForm(forms.ModelForm):
             'role'
             )
         labels = {
-            'first_name': 'Имя',
-            'middle_name': 'Отчество',
-            'last_name': 'Фамилия',
-            'email': 'Почта',
-            'password': 'Пароль',
-            'role': 'Статус'
+            'first_name': 'Name',
+            'middle_name': 'Patronymic name',
+            'last_name': 'Last name',
+            'email': 'E-mail',
+            'password': 'Password',
+            'role': 'Role'
         }
 
         # def __init__(self, *args, **kwargs):
