@@ -6,8 +6,16 @@ from .order_form import OrderForm
 
 def order_list(request):
     context = {}
+    orders = []
     all_order = Order.get_all()
-    context.update({'all_order': all_order})
+    for order in all_order:
+        order_txt ={'id': order.id,
+                    'name': f"{order.user.first_name} {order.user.last_name} {order.user.middle_name}",
+                    'book': f"{order.book.name}({order.book.description})"
+        }
+        orders.append(order_txt)
+    print(orders)
+    context.update({'all_order': orders})
     return render(request, 'order/all_order.html', context)
 
 

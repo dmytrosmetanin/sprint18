@@ -9,8 +9,7 @@
         <tr>
             <td> Пользователь библлитеки</td>
             <td>Взятая книга</td>
-            <td>Возвращена</td>
-            <td>Когда вернуть</td>
+
             <td><a href="{% url 'order:order_insert' %}" class="btn btn-outline-success">
                 <i class="fas fa-plus"></i> Выдать книгу:
             </a> </td>
@@ -20,10 +19,9 @@
     <tbody>
         {% for order in all_order %}
         <tr>
-            <td>{{ order.user }}</td>
+            <td>{{ order.name }}</td>
             <td>{{ order.book }}</td>
-            <td>{{ order.end_at }}</td>
-            <td> {{ order.plated_end_at }} </td>
+
             <td>
                 <a href="{% url 'order:order_update' order.id %}" class="btn text-secondary px-0">
                 <i class="far fa-edit fa-lg">Изменить</i>
