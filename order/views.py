@@ -2,7 +2,25 @@ from django.shortcuts import render, redirect
 
 from .models import Order
 from .order_form import OrderForm
-# Create your views here.
+
+from rest_framework import viewsets, filters
+from .serializer import *
+
+class OrderView(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+class IsOwnerFilterBackend(filters.BaseFilterBackend):
+
+    def filter_queryset(self, request, queryset, view):
+        return queryset.filter(owner=request.user)
+
+class Order_byUserIDView(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = Order_by_UserIDSerializer
+
+    filter_backends = [filters.SearchFilter, IsOwnerFilterBackend]
+    search_fields = ['first_name']
 
 def order_list(request):
     context = {}

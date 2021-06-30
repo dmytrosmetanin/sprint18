@@ -3,6 +3,16 @@ from django.shortcuts import render, redirect
 from .models import CustomUser
 from .user_form import UserForm
 
+from rest_framework import viewsets
+from .serializer import UserSerializer
+
+
+class UserView(viewsets.ModelViewSet):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
+
+
+
 
 def user_form(request, id=0):
     if request.method == 'GET':
