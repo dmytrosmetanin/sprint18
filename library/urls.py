@@ -18,12 +18,12 @@ from django.urls import path, include
 from .views import index
 
 from rest_framework import routers
+from rest_framework import permissions
 from book import views as book_views
 from author import views as author_views
 from order import views as order_views
 from authentication import views as user_views
 
-from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
@@ -36,11 +36,13 @@ schema_view = get_schema_view(openapi.Info(
     permission_classes=(permissions.AllowAny,), )
 
 router = routers.DefaultRouter()
-router.register('book', book_views.BookView)
-router.register('author', author_views.AuthorView)
+
+router.register('library/v1/book', book_views.BookView)
+router.register('library/v1/author', author_views.AuthorView)
 router.register('app/v1/order', order_views.OrderView)
 router.register('app/v1/user', user_views.UserView)
 router.register('app/v1/user/order', order_views.Order_byUserIDView)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,5 +52,5 @@ urlpatterns = [
     path('orders/', include('order.urls', namespace='order')),
     path('', index, name='index'),
     path('', include(router.urls)),
-    path('docs', schema_view.with_ui('swagger', cache_timeout=0))
+    path('docs/', schema_view.with_ui('swagger', cache_timeout=0))
 ]
