@@ -18,10 +18,12 @@ from django.urls import path, include
 from .views import index
 
 from rest_framework import routers
-from book import views
+from book import views as book_views
+from author import views as author_views
 
 router = routers.DefaultRouter()
-router.register('book', views.BookView)
+router.register('book', book_views.BookView)
+router.register('author', author_views.AuthorView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -1,8 +1,14 @@
 from django.shortcuts import render, redirect
-
+from rest_framework import viewsets
 from .models import Author
 from .author_form import AuthorForm
-# Create your views here.
+from .serializer import AuthorSerializer
+
+
+class AuthorView(viewsets.ModelViewSet):
+    queryset = Author.get_all()
+    serializer_class = AuthorSerializer
+
 
 def author_list(request):
     context = {}
@@ -11,7 +17,7 @@ def author_list(request):
     return render(request, 'author/all_author.html', context)
 
 
-def author_form(request, id = 0):
+def author_form(request, id=0):
     if request.method == 'GET':
         if id == 0:
             form = AuthorForm()
@@ -29,6 +35,7 @@ def author_form(request, id = 0):
         if form.is_valid():
             form.save()
         return redirect('author:author_list')
+
 
 def author_delete(request, id):
     Author.delete_by_id(id)
