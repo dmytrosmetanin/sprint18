@@ -17,11 +17,18 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import index
 
+from rest_framework import routers
+from book import views
+
+router = routers.DefaultRouter()
+router.register('book', views.BookView)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('books/', include('book.urls', namespace='book')),
     path('authors/', include('author.urls', namespace='author')),
     path('users/', include('authentication.urls', namespace='user')),
     path('orders/', include('order.urls', namespace='order')),
-    path('', index, name='index')
+    path('', index, name='index'),
+    path('', include(router.urls))
 ]

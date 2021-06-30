@@ -2,7 +2,15 @@ from django.shortcuts import render, redirect
 
 from .models import Book
 from .book_form import BookForm
-# Create your views here.
+
+from rest_framework import viewsets
+from .serializer import BookSerializer
+
+
+class BookView(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
 
 def book_list(request):
     context = {}
@@ -11,7 +19,7 @@ def book_list(request):
     return render(request, 'book/all_book.html', context)
 
 
-def book_form(request, id = 0):
+def book_form(request, id=0):
     if request.method == 'GET':
         if id == 0:
             form = BookForm()
@@ -30,6 +38,7 @@ def book_form(request, id = 0):
         if form.is_valid():
             form.save()
         return redirect('book:book_list')
+
 
 def book_delete(request, id):
     Book.delete_by_id(id)

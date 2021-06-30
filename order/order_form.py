@@ -14,7 +14,6 @@ class OrderForm(forms.ModelForm):
         }
         exclude = ('end_at', 'plated_end_at')
 
-
         # def __init__(self, *args, **kwargs):
     #     super(OrderForm, self).__init__(*args, **kwargs)
     #     self.fields['authors'].empty_label = 'Выберите одну или несколько книг'
