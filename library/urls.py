@@ -21,6 +21,18 @@ from rest_framework import routers
 from book import views as book_views
 from author import views as author_views
 
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(openapi.Info(
+    title="Library API",
+    default_version='v1',
+    description="Welcome to out library",
+),
+    public=True,
+    permission_classes=(permissions.AllowAny,), )
+
 router = routers.DefaultRouter()
 router.register('book', book_views.BookView)
 router.register('author', author_views.AuthorView)
@@ -32,5 +44,6 @@ urlpatterns = [
     path('users/', include('authentication.urls', namespace='user')),
     path('orders/', include('order.urls', namespace='order')),
     path('', index, name='index'),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('docs', schema_view.with_ui('swagger', cache_timeout=0))
 ]
